@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f3f3f3">
+
+            <RelativeLayout
+                android:id="@+id/layout_top_setting2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="35dp">
+                <ImageView
+                    android:id="@+id/btn_back_setting2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_back"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="목적지 정하기"
+                    android:layout_toEndOf="@id/btn_back_setting2"
+                    android:layout_marginStart="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_title_setting2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="52dp"
+                android:layout_below="@id/layout_top_setting2">
+
+                <ImageView
+                    android:id="@+id/img_spot_setting2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_spot"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="어디서 만나기로\n했더라?"
+                    android:layout_below="@id/img_spot_setting2"
+                    android:layout_marginTop="12dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_title_setting2"
+                android:layout_marginTop="40dp">
+
+                <!-- TODO: 넓이 높이를 고정 값이 아니게 하자-->
+                <RelativeLayout
+                    android:id="@+id/layout_source_setting2"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#ffffff"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_destination_setting2"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/layout_source_setting2"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffffff"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_dim_setting2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3f3f3f"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_x"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"/>
+
+            <!-- TODO: 고정수치 바꾸자 -->
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

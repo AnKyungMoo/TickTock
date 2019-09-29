@@ -6,7 +6,7 @@ import com.km.ticktock.base.BaseActivity
 import com.km.ticktock.databinding.ActivityLocationBinding
 
 class LocationActivity : BaseActivity() {
-    override val layoutRes = R.layout.activity_location
+    override val layoutRes = R.layout.activity_setting_2
     override val isUseDatabinding: Boolean = true
 
     private lateinit var binding: ActivityLocationBinding
