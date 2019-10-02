@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3f3f3f">
+
+        <ImageView
+                android:id="@+id/btn_x_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/btn_x" />
+
+        <!-- TODO: 상수 어떡하지.. -->
+        <EditText
+                android:id="@+id/edit_search_location"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="14dp"
+                android:layout_below="@id/btn_x_location"
+                android:layout_centerHorizontal="true"
+                android:background="#ffffff"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_main_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/edit_search_location"
+                android:layout_marginTop="24dp"/>
+    </RelativeLayout>
+</layout>

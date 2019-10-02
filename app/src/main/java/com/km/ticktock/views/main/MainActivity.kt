@@ -1,15 +1,10 @@
 package com.km.ticktock.views.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import com.km.ticktock.R
 import com.km.ticktock.base.BaseActivity
-import com.km.ticktock.databinding.ActivityLocationBinding
 import com.km.ticktock.databinding.ActivityMainBinding
 import com.km.ticktock.views.main.data.MainRepositoryImpl
-import com.km.ticktock.views.main.domain.MainRepository
 import com.km.ticktock.views.main.domain.MainViewModel
 
 class MainActivity : BaseActivity() {
