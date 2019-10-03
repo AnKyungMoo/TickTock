@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">TickTock</string>
+
+    <!-- item_sub_path -->
+    <string name="path_tv_total_time_ex">34분</string>
+    <string name="path_tv_total_time_minute">%1$d분</string>
+    <string name="path_tv_total_time">%1$d시간 %2$d분</string>
+    <string name="path_tv_total_walk_ex">도보 15분</string>
+    <string name="path_tv_total_walk">도보 %1$d분</string>
+    <string name="path_tv_divide">&#160;|&#160;</string>
+    <string name="path_tv_payment_ex">6,250원</string>
+    <string name="path_tv_payment">%1$s원</string>
+    <string name="path_tv_bus_no_ex">740</string>
+    <string name="path_tv_bus_no">%1$d</string>
+    <string name="path_tv_get_on_ex">합정역 승차</string>
+    <string name="path_tv_get_on">%1$s 승차</string>
+    <string name="path_tv_transfer">%1$s 환승</string>
+    <string name="path_tv_get_off_ex">시청역 환승 > 종각역 하차</string>
+    <string name="path_tv_get_off">%1$s 하차</string>
+    <string name="path_tv_next">&#160;>&#160;</string>
 </resources>
