@@ -8,6 +8,10 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitService {
+    fun restAPI(): SearchInterface {
+        return retrofitInterface().create(SearchInterface::class.java)
+    }
+
     private val httpClient = OkHttpClient.Builder()
         .addNetworkInterceptor { chain: Interceptor.Chain -> chain.proceed(chain.request().newBuilder().build()) }
 
