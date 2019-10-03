@@ -1,4 +1,4 @@
-package com.km.ticktock.views.location.domain
+package com.km.ticktock.views.alarmsetting.domain
 
 import android.content.Context
 

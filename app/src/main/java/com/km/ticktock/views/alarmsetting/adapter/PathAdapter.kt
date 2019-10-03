@@ -1,4 +1,4 @@
-package com.km.ticktock.views.location.adapter
+package com.km.ticktock.views.alarmsetting.adapter
 
 import android.content.Context
 import android.graphics.Point
