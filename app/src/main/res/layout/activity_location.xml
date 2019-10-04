@@ -7,6 +7,7 @@
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#3f3f3f">
@@ -34,6 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/edit_search_location"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:background="@android:color/white"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:setPathList="@{vm.observeTransPath()}" />
     </RelativeLayout>
 </layout>

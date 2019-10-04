@@ -1,4 +1,4 @@
-package com.km.ticktock.views.location.entity
+package com.km.ticktock.views.alarmsetting.entity
 
 class SearchPubTransPath(val type: Int, val path: Path, val subPathList: ArrayList<SubPath>) {
     /*

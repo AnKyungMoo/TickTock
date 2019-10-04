@@ -1,22 +1,21 @@
 package com.km.ticktock.views.alarmsetting.adapter
 
 import android.content.Context
-import android.graphics.Point
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.km.ticktock.R
 import com.km.ticktock.databinding.ItemPathBinding
 import com.km.ticktock.utils.BasicUtils
-import com.km.ticktock.views.location.entity.SearchPubTransPath
+import com.km.ticktock.views.alarmsetting.entity.SearchPubTransPath
 
-class PathAdapter(val context: Context?, var transPaths: ArrayList<SearchPubTransPath>): RecyclerView.Adapter<PathAdapter.PathViewHolder>() {
+class PathAdapter(val context: Context?): RecyclerView.Adapter<PathAdapter.PathViewHolder>() {
+
+    private var transPaths = ArrayList<SearchPubTransPath>()
 
     private lateinit var binding: ItemPathBinding
 
@@ -116,8 +115,17 @@ class PathAdapter(val context: Context?, var transPaths: ArrayList<SearchPubTran
         binding.rcvSubPath.adapter = SubPathAdapter(subPathListExceptWalk)
     }
 
-    override fun getItemCount(): Int {
-        return transPaths.size
+    override fun getItemCount() = transPaths.size
+
+    fun addAll(transPaths: ArrayList<SearchPubTransPath>) {
+        val oldSize = itemCount
+        this.transPaths = transPaths
+        notifyItemRangeInserted(oldSize, transPaths.size)
+    }
+
+    fun clear() {
+        transPaths.clear()
+        notifyDataSetChanged()
     }
 
     class PathViewHolder(private val binding: ItemPathBinding): RecyclerView.ViewHolder(binding.root) {

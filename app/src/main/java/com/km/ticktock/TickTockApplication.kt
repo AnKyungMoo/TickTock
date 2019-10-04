@@ -2,7 +2,8 @@ package com.km.ticktock
 
 import android.app.Application
 import com.km.ticktock.utils.BasicUtils
-import com.km.ticktock.utils.BindUtils
+import com.km.ticktock.views.alarmsetting.adapter.PathBindingAdapter
+import com.km.ticktock.views.alarmsetting.adapter.SubPathBindingAdapter
 
 class TickTockApplication: Application() {
 
@@ -10,6 +11,12 @@ class TickTockApplication: Application() {
         super.onCreate()
 
         BasicUtils.init(this)
-        BindUtils.init(this)
+        initBindingAdapter()
+    }
+
+    private fun initBindingAdapter() {
+
+        PathBindingAdapter.init(this)
+        SubPathBindingAdapter.init(this)
     }
 }

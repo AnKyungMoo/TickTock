@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.km.ticktock.utils.BindUtils" />
         <variable
             name="path"
-            type="com.km.ticktock.views.location.entity.SearchPubTransPath.Path" />
+            type="com.km.ticktock.views.alarmsetting.entity.SearchPubTransPath.Path" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +23,7 @@
             android:id="@+id/tv_path_total_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{BindUtils.setPathTotalTime(path.totalTime)}"
+            app:setPathTotalTime="@{path.totalTime}"
             android:textColor="@color/text_black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -37,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@{BindUtils.setPathTotalWalk(path.totalWalk)}"
+            app:setPathTotalWalk="@{path.totalWalk}"
             android:textColor="@color/text_gray"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/tv_path_divide"
@@ -59,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@{BindUtils.setPathPayment(path.payment)}"
+            app:setPathPayment="@{path.payment}"
             android:textColor="@color/text_gray"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
