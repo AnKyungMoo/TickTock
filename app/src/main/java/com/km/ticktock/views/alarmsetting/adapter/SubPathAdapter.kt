@@ -8,8 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.km.ticktock.R
 import com.km.ticktock.databinding.ItemSubPathBinding
-import com.km.ticktock.utils.BindUtils
-import com.km.ticktock.views.location.entity.SearchPubTransPath
+import com.km.ticktock.views.alarmsetting.entity.SearchPubTransPath
 
 class SubPathAdapter(private val subPathList: ArrayList<SearchPubTransPath.SubPath>): RecyclerView.Adapter<SubPathAdapter.SubPathViewHolder>() {
 
@@ -91,13 +90,13 @@ class SubPathAdapter(private val subPathList: ArrayList<SearchPubTransPath.SubPa
     private fun setSubPathText(position: Int) {
 
         if (position == 0 && position == itemCount-1) {
-            binding.tvSubPath.text = BindUtils.setSubPath(subPathList[position], isFirst = true, isLast = true)
+            binding.tvSubPath.text = SubPathBindingAdapter.setSubPath(subPathList[position], isFirst = true, isLast = true)
         } else if (position == 0 && position < itemCount-1) {
-            binding.tvSubPath.text = BindUtils.setSubPath(subPathList[position], isFirst = true, isLast = false)
+            binding.tvSubPath.text = SubPathBindingAdapter.setSubPath(subPathList[position], isFirst = true, isLast = false)
         } else if (position > 0 && position < itemCount-1) {
-            binding.tvSubPath.text = BindUtils.setSubPath(subPathList[position], isFirst = false, isLast = false)
+            binding.tvSubPath.text = SubPathBindingAdapter.setSubPath(subPathList[position], isFirst = false, isLast = false)
         } else { // position > 0 && position == itemCount-1
-            binding.tvSubPath.text = BindUtils.setSubPath(subPathList[position], isFirst = false, isLast = true)
+            binding.tvSubPath.text = SubPathBindingAdapter.setSubPath(subPathList[position], isFirst = false, isLast = true)
         }
     }
 

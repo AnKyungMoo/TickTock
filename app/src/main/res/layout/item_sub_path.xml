@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.km.ticktock.utils.BindUtils" />
         <variable
             name="subPath"
-            type="com.km.ticktock.views.location.entity.SearchPubTransPath.SubPath" />
+            type="com.km.ticktock.views.alarmsetting.entity.SearchPubTransPath.SubPath" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
