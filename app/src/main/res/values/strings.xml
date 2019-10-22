@@ -18,4 +18,22 @@
     <string name="path_tv_get_off_ex">시청역 환승 > 종각역 하차</string>
     <string name="path_tv_get_off">%1$s 하차</string>
     <string name="path_tv_next">&#160;>&#160;</string>
+
+    <!-- activity_setting_first -->
+    <string name="setting_first_tv_subtitle">시간 정하기</string>
+    <string name="setting_first_tv_title">약속이\n<b>언제 몇 시</b> 였지?</string>
+    <string name="setting_first_tv_days">요일</string>
+    <string name="setting_first_tv_fix_every_week">매주 고정</string>
+    <string name="setting_first_tv_monday">월</string>
+    <string name="setting_first_tv_tuesday">화</string>
+    <string name="setting_first_tv_wednesday">수</string>
+    <string name="setting_first_tv_thursday">목</string>
+    <string name="setting_first_tv_friday">금</string>
+    <string name="setting_first_tv_saturday">토</string>
+    <string name="setting_first_tv_sunday">일</string>
+    <string name="setting_first_tv_time">시간</string>
+    <string name="setting_first_tv_divide">:</string>
+    <string name="setting_first_tv_pm">PM</string>
+    <string name="setting_first_tv_am">AM</string>
+    <string name="setting_first_tv_next_step">다음 단계</string>
 </resources>

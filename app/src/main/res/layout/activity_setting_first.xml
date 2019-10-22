@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.alarmsetting.SettingFirstActivity">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.km.ticktock.views.alarmsetting.SettingFirstViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray"
+        android:onClick="onCloseKeyboard">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="17dp"
+            android:padding="5dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ico_back"
+            android:onClick="onBackClick"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toTopOf="@+id/iv_clock"
+            app:layout_constraintEnd_toStartOf="@+id/tv_subtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/setting_first_tv_subtitle"
+            android:textColor="@color/bg_black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="57dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ico_clock"
+            app:layout_constraintBottom_toTopOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/setting_first_tv_title"
+            android:textColor="@color/bg_black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_day"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_clock" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/layout_border_radius"
+            android:onClick="onCloseKeyboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <TextView
+                android:id="@+id/tv_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_first_tv_days"
+                android:textColor="@color/bg_black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_monday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_fix_every_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_first_tv_fix_every_week"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/cb_days"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <CheckBox
+                android:id="@+id/cb_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="8dp"
+                android:buttonTint="@color/color_main"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_monday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_monday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onMondayClick"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_tuesday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+            <Button
+                android:id="@+id/btn_tuesday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_tuesday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onTuesdayClick"
+                app:layout_constraintEnd_toStartOf="@+id/btn_wednesday"
+                app:layout_constraintStart_toEndOf="@+id/btn_monday"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+            <Button
+                android:id="@+id/btn_wednesday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_wednesday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onWednesdayClick"
+                app:layout_constraintEnd_toStartOf="@+id/btn_thursday"
+                app:layout_constraintStart_toEndOf="@+id/btn_tuesday"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+            <Button
+                android:id="@+id/btn_thursday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_thursday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onThursdayClick"
+                app:layout_constraintEnd_toStartOf="@+id/btn_friday"
+                app:layout_constraintStart_toEndOf="@+id/btn_wednesday"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+            <Button
+                android:id="@+id/btn_friday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_friday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onFridayClick"
+                app:layout_constraintEnd_toStartOf="@+id/btn_saturday"
+                app:layout_constraintStart_toEndOf="@+id/btn_thursday"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+            <Button
+                android:id="@+id/btn_saturday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_saturday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onSaturdayClick"
+                app:layout_constraintEnd_toStartOf="@+id/btn_sunday"
+                app:layout_constraintStart_toEndOf="@+id/btn_friday"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+            <Button
+                android:id="@+id/btn_sunday"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_day"
+                android:text="@string/setting_first_tv_sunday"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onSundayClick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_saturday"
+                app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/layout_border_radius"
+            android:onClick="onCloseKeyboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_day">
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_first_tv_time"
+                android:textColor="@color/bg_black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/iv_hour_up"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="27dp"
+                android:background="@color/bg_gray"
+                android:contentDescription="@null"
+                android:onClick="onHourUpClick"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+            <EditText
+                android:id="@+id/ed_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:text="@{vm.observeHourText()}"
+                android:textColor="@color/text_gray"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_hour_up" />
+
+            <Button
+                android:id="@+id/iv_hour_down"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginStart="50dp"
+                android:padding="4dp"
+                android:background="@color/bg_gray"
+                android:contentDescription="@null"
+                android:onClick="onHourDownClick"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_hour" />
+
+            <TextView
+                android:id="@+id/tv_time_divide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="37dp"
+                android:text="@string/setting_first_tv_divide"
+                android:textColor="@color/text_gray"
+                android:textSize="50sp"
+                app:layout_constraintStart_toEndOf="@+id/ed_hour"
+                app:layout_constraintTop_toBottomOf="@id/iv_hour_up" />
+
+            <Button
+                android:id="@+id/iv_minute_up"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="27dp"
+                android:background="@color/bg_gray"
+                android:contentDescription="@null"
+                android:onClick="onMinuteUpClick"
+                app:layout_constraintStart_toEndOf="@+id/tv_time_divide"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+            <EditText
+                android:id="@+id/ed_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:text="@{vm.observeMinuteText()}"
+                android:textColor="@color/text_gray"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tv_time_divide"
+                app:layout_constraintTop_toBottomOf="@+id/iv_hour_up" />
+
+            <Button
+                android:id="@+id/iv_minute_down"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:layout_marginBottom="44dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/bg_gray"
+                android:contentDescription="@null"
+                android:onClick="onMinuteDownClick"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_time_divide"
+                app:layout_constraintTop_toBottomOf="@+id/ed_hour" />
+
+            <Button
+                android:id="@+id/btn_pm"
+                android:layout_width="38dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_btn_time"
+                android:text="@string/setting_first_tv_pm"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onPMClick"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/btn_am"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ed_minute"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_am"
+                android:layout_width="38dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_btn_time"
+                android:text="@string/setting_first_tv_am"
+                android:textColor="@color/selector_btn"
+                android:textSize="14sp"
+                android:onClick="onAMClick"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ed_minute"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pm" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_next_step"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/selector_btn_next"
+            android:onClick="onNextStepClick"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv_next_step"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30sp"
+                android:text="@string/setting_first_tv_next_step"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
