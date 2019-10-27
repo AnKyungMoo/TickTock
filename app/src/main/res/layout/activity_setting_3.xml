@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f3f3f3">
+
+        <RelativeLayout
+            android:id="@+id/layout_top_setting3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="18dp">
+
+            <ImageView
+                android:id="@+id/btn_back_setting3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ico_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/btn_back_setting3"
+                android:text="준비과정 선택" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_title_setting3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_top_setting3"
+            android:layout_marginTop="52dp"
+            android:layout_marginStart="40dp">
+
+            <ImageView
+                android:id="@+id/img_spot_setting3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ico_menu"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가기 전에\n무엇을 준비하지?"
+                android:textSize="24sp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@id/img_spot_setting3"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_setting3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_title_setting3"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#b6b6b6"
+            android:layout_above="@id/layout_indicator_setting3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="완료"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_indicator_setting3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FF562D"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</layout>
