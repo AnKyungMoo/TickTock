@@ -18,4 +18,9 @@
     <string name="path_tv_get_off_ex">시청역 환승 > 종각역 하차</string>
     <string name="path_tv_get_off">%1$s 하차</string>
     <string name="path_tv_next">&#160;>&#160;</string>
+
+    <!-- activity_main -->
+    <string name="main_tv_title"><b>새로운 약속 카드</b>를\n<b>생성</b>해주세요</string>
+    <string name="main_tv_registered_appointment">등록된 약속 %1$d</string>
+    <string name="main_tv_none">등록된 약속이 없어요</string>
 </resources>

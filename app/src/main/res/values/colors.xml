@@ -4,10 +4,16 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="orange_red">#ff562d</color>
+    <color name="switch_gray">#b3b3b3</color>
+
     <color name="text_black">#323232</color>
     <color name="text_gray">#adadad</color>
+    <color name="text_brown_gray">#858585</color>
+    <color name="text_light_peach">#b6b6b6</color>
 
     <color name="bg_black">#3f3f3f</color>
+    <color name="bg_gray">#f3f3f3</color>
 
     <!-- item_path -->
     <color name="walk">#d8d8d8</color>
