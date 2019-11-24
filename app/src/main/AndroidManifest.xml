@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".views.main.MainActivity">
         </activity>
-        <activity android:name=".views.alarmsetting.SettingActivity2">
+        <activity android:name=".views.alarmsetting.SettingSecondActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.alarmsetting.LocationActivity" />
+        <activity android:name=".views.alarmsetting.SearchActivity" />
     </application>
 
 </manifest>
