@@ -19,7 +19,7 @@
     <string name="path_tv_get_off">%1$s 하차</string>
     <string name="path_tv_next">&#160;>&#160;</string>
 
-    <!-- activity_setting_1 -->
+    <!-- activity_setting_first -->
     <string name="setting_1_tv_subtitle">시간 정하기</string>
     <string name="setting_1_tv_title">약속이\n<b>언제 몇 시</b> 였지?</string>
     <string name="setting_1_tv_days">요일</string>

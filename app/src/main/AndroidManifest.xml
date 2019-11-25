@@ -17,11 +17,7 @@
             android:name=".views.main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.alarmsetting.SettingActivity1"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
-            android:name=".views.alarmsetting.SettingActivity2"
+            android:name=".views.alarmsetting.SettingFirstActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

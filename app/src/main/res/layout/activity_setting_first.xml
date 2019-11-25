@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.alarmsetting.SettingActivity1">
+    tools:context=".views.alarmsetting.SettingFirstActivity">
 
     <data>
+        <import type="com.km.ticktock.views.alarmsetting.entity.DayType" />
+        <import type="com.km.ticktock.views.alarmsetting.entity.TimeType" />
         <variable
             name="vm"
-            type="com.km.ticktock.views.alarmsetting.SettingViewModel1" />
+            type="com.km.ticktock.views.alarmsetting.SettingFirstViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,62 +18,73 @@
         android:layout_height="match_parent"
         android:background="@color/bg_gray">
 
-        <ScrollView
-            android:id="@+id/scroll_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_top"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/cl_next_step"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> vm.onBackClick()}"
+            app:layout_constraintBottom_toTopOf="@+id/scroll_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="17dp"
+                android:padding="5dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ico_back"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_subtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/setting_1_tv_subtitle"
+                android:textColor="@color/bg_black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_back"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_next_step"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onCloseKeyboard">
-
-                <ImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="17dp"
-                    android:padding="5dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ico_back"
-                    android:onClick="onBackClick"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintVertical_chainStyle="spread_inside"
-                    app:layout_constraintBottom_toTopOf="@+id/iv_clock"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_subtitle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_subtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/setting_1_tv_subtitle"
-                    android:textColor="@color/bg_black"
-                    android:textSize="12sp"
-                    android:onClick="onBackClick"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_back"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:onClick="@{() -> vm.onCloseKeyboard()}">
 
                 <ImageView
                     android:id="@+id/iv_clock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="32dp"
                     android:contentDescription="@null"
                     android:src="@drawable/ico_clock"
                     app:layout_constraintBottom_toTopOf="@+id/tv_title"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_back" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_title"
@@ -94,7 +107,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/layout_border_radius"
-                    android:onClick="onCloseKeyboard"
+                    android:onClick="@{() -> vm.onCloseKeyboard()}"
                     app:layout_constraintBottom_toTopOf="@+id/cl_time"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +160,7 @@
                         android:text="@string/setting_1_tv_monday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onMondayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.MONDAY)}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btn_tuesday"
                         app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +176,7 @@
                         android:text="@string/setting_1_tv_tuesday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onTuesdayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.TUESDAY)}"
                         app:layout_constraintEnd_toStartOf="@+id/btn_wednesday"
                         app:layout_constraintStart_toEndOf="@+id/btn_monday"
                         app:layout_constraintTop_toBottomOf="@+id/tv_days" />
@@ -178,7 +191,7 @@
                         android:text="@string/setting_1_tv_wednesday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onWednesdayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.WEDNESDAY)}"
                         app:layout_constraintEnd_toStartOf="@+id/btn_thursday"
                         app:layout_constraintStart_toEndOf="@+id/btn_tuesday"
                         app:layout_constraintTop_toBottomOf="@+id/tv_days" />
@@ -193,7 +206,7 @@
                         android:text="@string/setting_1_tv_thursday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onThursdayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.THURSDAY)}"
                         app:layout_constraintEnd_toStartOf="@+id/btn_friday"
                         app:layout_constraintStart_toEndOf="@+id/btn_wednesday"
                         app:layout_constraintTop_toBottomOf="@+id/tv_days" />
@@ -208,7 +221,7 @@
                         android:text="@string/setting_1_tv_friday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onFridayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.FRIDAY)}"
                         app:layout_constraintEnd_toStartOf="@+id/btn_saturday"
                         app:layout_constraintStart_toEndOf="@+id/btn_thursday"
                         app:layout_constraintTop_toBottomOf="@+id/tv_days" />
@@ -223,7 +236,7 @@
                         android:text="@string/setting_1_tv_saturday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onSaturdayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.SATURDAY)}"
                         app:layout_constraintEnd_toStartOf="@+id/btn_sunday"
                         app:layout_constraintStart_toEndOf="@+id/btn_friday"
                         app:layout_constraintTop_toBottomOf="@+id/tv_days" />
@@ -239,7 +252,7 @@
                         android:text="@string/setting_1_tv_sunday"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onSundayClick"
+                        android:onClick="@{() -> vm.onDayClick(DayType.SUNDAY)}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/btn_saturday"
                         app:layout_constraintTop_toBottomOf="@+id/tv_days" />
@@ -258,7 +271,7 @@
                     android:paddingStart="18dp"
                     android:paddingTop="16dp"
                     android:background="@drawable/layout_border_radius"
-                    android:onClick="onCloseKeyboard"
+                    android:onClick="@{() -> vm.onCloseKeyboard()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -278,7 +291,10 @@
                         android:id="@+id/cl_hour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
                         android:layout_marginTop="13dp"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tv_time_divide"
                         app:layout_constraintStart_toStartOf="parent"
@@ -288,10 +304,11 @@
                             android:id="@+id/iv_hour_up"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="14dp"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="14dp"
                             android:contentDescription="@null"
                             android:src="@drawable/selector_btn_arrow_up"
-                            android:onClick="onHourUpClick"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.HOUR_UP)}"
                             app:layout_constraintBottom_toTopOf="@+id/ed_hour"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -306,7 +323,7 @@
                             android:inputType="number"
                             android:maxWidth="64dp"
                             android:minWidth="64dp"
-                            android:text="@{vm.observeHourText()}"
+                            android:text="@{vm.hourText}"
                             android:textColor="@color/selector_edit_text"
                             android:textSize="40sp"
                             android:textStyle="bold"
@@ -321,7 +338,7 @@
                             android:layout_height="wrap_content"
                             android:padding="14dp"
                             android:contentDescription="@null"
-                            android:onClick="onHourDownClick"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.HOUR_DOWN)}"
                             android:src="@drawable/selector_btn_arrow_down"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -333,7 +350,7 @@
                         android:id="@+id/tv_time_divide"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="27dp"
+                        android:layout_marginStart="37dp"
                         android:text="@string/setting_1_tv_divide"
                         android:textColor="@color/selector_edit_text"
                         android:textSize="50sp"
@@ -346,6 +363,7 @@
                         android:id="@+id/cl_minute"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
                         android:layout_marginTop="13dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btn_pm"
@@ -356,9 +374,10 @@
                             android:id="@+id/iv_minute_up"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="14dp"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="14dp"
                             android:contentDescription="@null"
-                            android:onClick="onMinuteUpClick"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.MINUTE_UP)}"
                             android:src="@drawable/selector_btn_arrow_up"
                             app:layout_constraintBottom_toTopOf="@+id/ed_minute"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -374,7 +393,7 @@
                             android:inputType="number"
                             android:maxWidth="64dp"
                             android:minWidth="64dp"
-                            android:text="@{vm.observeMinuteText()}"
+                            android:text="@{vm.minuteText}"
                             android:textColor="@color/selector_edit_text"
                             android:textSize="40sp"
                             android:textStyle="bold"
@@ -389,7 +408,7 @@
                             android:layout_height="wrap_content"
                             android:padding="14dp"
                             android:contentDescription="@null"
-                            android:onClick="onMinuteDownClick"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.MINUTE_DOWN)}"
                             android:src="@drawable/selector_btn_arrow_down"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -399,32 +418,30 @@
 
                     <Button
                         android:id="@+id/btn_pm"
-                        android:layout_width="38dp"
-                        android:layout_height="22dp"
+                        android:layout_width="42dp"
+                        android:layout_height="24dp"
                         android:background="@drawable/selector_btn_time"
                         android:text="@string/setting_1_tv_pm"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onPMClick"
+                        android:onClick="@{() -> vm.onTimeClick(TimeType.PM)}"
                         app:layout_constraintVertical_chainStyle="packed"
                         app:layout_constraintBottom_toTopOf="@+id/btn_am"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/cl_minute"
                         app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
                     <Button
                         android:id="@+id/btn_am"
-                        android:layout_width="38dp"
-                        android:layout_height="22dp"
+                        android:layout_width="42dp"
+                        android:layout_height="24dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_btn_time"
                         android:text="@string/setting_1_tv_am"
                         android:textColor="@color/selector_btn"
                         android:textSize="14sp"
-                        android:onClick="onAMClick"
+                        android:onClick="@{() -> vm.onTimeClick(TimeType.AM)}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/cl_minute"
                         app:layout_constraintTop_toBottomOf="@+id/btn_pm" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -434,8 +451,8 @@
             android:id="@+id/cl_next_step"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="onNextStepClick"
-            app:setClickable="@{vm.observeNextStepClickable()}"
+            android:onClick="@{() -> vm.onNextClick()}"
+            app:setClickable="@{vm.nextStepClickable}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
