@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="16dp"
-    android:paddingStart="17dp"
-    android:paddingEnd="0dp"
-    android:paddingBottom="14dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/img_item_icon"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ico_spot"
-        android:layout_centerVertical="true"/>
+        android:paddingTop="16dp"
+        android:paddingStart="17dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="14dp">
 
-    <TextView
-        android:id="@+id/txt_location_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="합정역 6호선"
-        android:textSize="14sp"
-        android:layout_toEndOf="@id/img_item_icon"
-        android:layout_marginStart="15dp"
-        android:textColor="#343434"/>
+        <ImageView
+            android:id="@+id/img_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_spot"
+            android:layout_centerVertical="true"/>
 
-    <TextView
-        android:id="@+id/txt_location_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="서울특별시 마포구 양화로 55 합정역"
-        android:layout_below="@id/txt_location_title"
-        android:layout_alignStart="@id/txt_location_title"
-        android:textSize="12sp"
-        android:textColor="#979797"
-        android:layout_marginTop="2dp"/>
+        <TextView
+            android:id="@+id/txt_location_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="합정역 6호선"
+            android:textSize="14sp"
+            android:layout_toEndOf="@id/img_item_icon"
+            android:layout_marginStart="15dp"
+            android:textColor="#343434"/>
+
+        <TextView
+            android:id="@+id/txt_location_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서울특별시 마포구 양화로 55 합정역"
+            android:layout_below="@id/txt_location_title"
+            android:layout_alignStart="@id/txt_location_title"
+            android:textSize="12sp"
+            android:textColor="#979797"
+            android:layout_marginTop="2dp"/>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>
