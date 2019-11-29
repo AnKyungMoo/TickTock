@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.alarmsetting.SettingFirstActivity">
+
+    <data>
+        <import type="com.km.ticktock.views.alarmsetting.entity.DayType" />
+        <import type="com.km.ticktock.views.alarmsetting.entity.TimeType" />
+        <variable
+            name="vm"
+            type="com.km.ticktock.views.alarmsetting.SettingFirstViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> vm.onBackClick()}"
+            app:layout_constraintBottom_toTopOf="@+id/scroll_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="17dp"
+                android:padding="5dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ico_back"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_subtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/setting_1_tv_subtitle"
+                android:textColor="@color/bg_black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_back"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_next_step"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.onCloseKeyboard()}">
+
+                <ImageView
+                    android:id="@+id/iv_clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ico_clock"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/setting_1_tv_title"
+                    android:textColor="@color/bg_black"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/cl_day"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_clock" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/layout_border_radius"
+                    android:onClick="@{() -> vm.onCloseKeyboard()}"
+                    app:layout_constraintBottom_toTopOf="@+id/cl_time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+                    <TextView
+                        android:id="@+id/tv_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/setting_1_tv_days"
+                        android:textColor="@color/bg_black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_monday"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_fix_every_week"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/setting_1_tv_fix_every_week"
+                        android:textColor="@color/text_gray"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/cb_days"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <CheckBox
+                        android:id="@+id/cb_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="9dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="5dp"
+                        android:button="@drawable/selector_check_box"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_monday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_monday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.MONDAY)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_tuesday"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+                    <Button
+                        android:id="@+id/btn_tuesday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_tuesday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.TUESDAY)}"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_wednesday"
+                        app:layout_constraintStart_toEndOf="@+id/btn_monday"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+                    <Button
+                        android:id="@+id/btn_wednesday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_wednesday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.WEDNESDAY)}"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_thursday"
+                        app:layout_constraintStart_toEndOf="@+id/btn_tuesday"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+                    <Button
+                        android:id="@+id/btn_thursday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_thursday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.THURSDAY)}"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_friday"
+                        app:layout_constraintStart_toEndOf="@+id/btn_wednesday"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+                    <Button
+                        android:id="@+id/btn_friday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_friday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.FRIDAY)}"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_saturday"
+                        app:layout_constraintStart_toEndOf="@+id/btn_thursday"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+                    <Button
+                        android:id="@+id/btn_saturday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_saturday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.SATURDAY)}"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_sunday"
+                        app:layout_constraintStart_toEndOf="@+id/btn_friday"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+
+                    <Button
+                        android:id="@+id/btn_sunday"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/selector_btn_day"
+                        android:text="@string/setting_1_tv_sunday"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onDayClick(DayType.SUNDAY)}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btn_saturday"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_days" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="139dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="12dp"
+                    android:paddingBottom="30dp"
+                    android:paddingEnd="22dp"
+                    android:paddingStart="18dp"
+                    android:paddingTop="16dp"
+                    android:background="@drawable/layout_border_radius"
+                    android:onClick="@{() -> vm.onCloseKeyboard()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_day">
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_1_tv_time"
+                        android:textColor="@color/bg_black"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="13dp"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_time_divide"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_time">
+
+                        <ImageView
+                            android:id="@+id/iv_hour_up"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="14dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/selector_btn_arrow_up"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.HOUR_UP)}"
+                            app:layout_constraintBottom_toTopOf="@+id/ed_hour"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/ed_hour"
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxWidth="64dp"
+                            android:minWidth="64dp"
+                            android:text="@{vm.hourText}"
+                            android:textColor="@color/selector_edit_text"
+                            android:textSize="40sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/iv_hour_down"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_hour_up" />
+
+                        <ImageView
+                            android:id="@+id/iv_hour_down"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:contentDescription="@null"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.HOUR_DOWN)}"
+                            android:src="@drawable/selector_btn_arrow_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ed_hour" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tv_time_divide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="37dp"
+                        android:text="@string/setting_1_tv_divide"
+                        android:textColor="@color/selector_edit_text"
+                        android:textSize="50sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/cl_minute"
+                        app:layout_constraintStart_toEndOf="@+id/cl_hour"
+                        app:layout_constraintTop_toBottomOf="@id/tv_time" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="13dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_pm"
+                        app:layout_constraintStart_toEndOf="@+id/tv_time_divide"
+                        app:layout_constraintTop_toBottomOf="@id/tv_time">
+
+                        <ImageView
+                            android:id="@+id/iv_minute_up"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="14dp"
+                            android:contentDescription="@null"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.MINUTE_UP)}"
+                            android:src="@drawable/selector_btn_arrow_up"
+                            app:layout_constraintBottom_toTopOf="@+id/ed_minute"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/ed_minute"
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxWidth="64dp"
+                            android:minWidth="64dp"
+                            android:text="@{vm.minuteText}"
+                            android:textColor="@color/selector_edit_text"
+                            android:textSize="40sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/iv_minute_down"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_minute_up" />
+
+                        <ImageView
+                            android:id="@+id/iv_minute_down"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:contentDescription="@null"
+                            android:onClick="@{() -> vm.onTimeClick(TimeType.MINUTE_DOWN)}"
+                            android:src="@drawable/selector_btn_arrow_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ed_minute" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/btn_pm"
+                        android:layout_width="42dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/selector_btn_time"
+                        android:text="@string/setting_1_tv_pm"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onTimeClick(TimeType.PM)}"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_am"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+                    <Button
+                        android:id="@+id/btn_am"
+                        android:layout_width="42dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_btn_time"
+                        android:text="@string/setting_1_tv_am"
+                        android:textColor="@color/selector_btn"
+                        android:textSize="14sp"
+                        android:onClick="@{() -> vm.onTimeClick(TimeType.AM)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_pm" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_next_step"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> vm.onNextClick()}"
+            app:setClickable="@{vm.nextStepClickable}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scroll_view">
+
+            <TextView
+                android:id="@+id/tv_next_step"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:paddingEnd="30dp"
+                android:paddingStart="0dp"
+                android:background="@drawable/selector_btn_next"
+                android:gravity="center_vertical|end"
+                android:text="@string/setting_1_tv_next_step"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/iv_indicator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"  />
+
+            <ImageView
+                android:id="@+id/iv_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/progress_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_next_step" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

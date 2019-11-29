@@ -30,6 +30,7 @@ class LocationActivity : BaseActivity() {
     override fun onDataBinding() {
         binding = DataBindingUtil.setContentView(this, layoutRes)
         binding.vm = viewModel
+        binding.lifecycleOwner = this
     }
 
     private fun initRecyclerViewPath() {

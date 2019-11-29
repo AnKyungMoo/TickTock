@@ -2,12 +2,15 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#3f3f3f</color>
+
+    <color name="color_main">#ff562d</color>
 
     <color name="text_black">#323232</color>
     <color name="text_gray">#adadad</color>
 
     <color name="bg_black">#3f3f3f</color>
+    <color name="bg_gray">#f3f3f3</color>
 
     <!-- item_path -->
     <color name="walk">#d8d8d8</color>
