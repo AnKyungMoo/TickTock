@@ -19,16 +19,17 @@ class SettingSecondActivity : BaseActivity() {
 
     private fun searchClick() {
         val owner = this
-        /* TODO: focus 차이를 둘 것 */
+
         with(binding.vm as SettingSecondViewModel) {
             sourceClickEvent.observe(owner, Observer {
                 val intent = Intent(owner, SearchActivity::class.java)
+                intent.putExtra("focus", 1)
                 startActivity(intent)
             })
 
-            /* TODO: LocationActivity -> SearchActivity 로 바꾸자 */
             destinationClickEvent.observe(owner, Observer {
-                val intent = Intent(owner, LocationActivity::class.java)
+                val intent = Intent(owner, SearchActivity::class.java)
+                intent.putExtra("focus", 2)
                 startActivity(intent)
             })
         }

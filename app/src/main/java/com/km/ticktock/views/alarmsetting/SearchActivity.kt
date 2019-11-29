@@ -3,6 +3,7 @@ package com.km.ticktock.views.alarmsetting
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.km.ticktock.R
@@ -25,8 +26,16 @@ class SearchActivity : BaseActivity() {
     lateinit var binding: ActivitySearchBinding
 
     override fun setupViews() {
+        initFocus()
         searchLocation()
         initRecyclerViewPath()
+    }
+
+    private fun initFocus() {
+        when (intent.getIntExtra("focus", 1)) {
+            1 -> binding.editSearchSource.requestFocus()
+            2 -> binding.editSearchDestination.requestFocus()
+        }
     }
 
     private fun searchLocation() {
