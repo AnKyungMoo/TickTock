@@ -13,16 +13,80 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edit_search_location"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/layout_top_search"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{vm.searchtext}"/>
+            android:background="#323232"
+            android:paddingBottom="33dp">
+
+            <ImageView
+                android:id="@+id/btn_back_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_x"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"/>
+
+            <RelativeLayout
+                android:id="@+id/layout_source_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_back_search"
+                android:background="@drawable/search_text_shape"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="14dp">
+
+                <ImageView
+                    android:id="@+id/img_source_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_start_gray"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="21dp"/>
+
+                <EditText
+                    android:id="@+id/edit_search_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.searchtext}"
+                    android:hint="출발지를 입력해주세요"
+                    android:layout_toEndOf="@id/img_source_search"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_destination_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_source_search"
+                android:background="@drawable/search_text_shape"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/img_destination_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_spot"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="21dp"/>
+
+                <EditText
+                    android:id="@+id/edit_search_destination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.searchtext}"
+                    android:hint="목적지를 입력해주세요"
+                    android:layout_toEndOf="@id/img_destination_search"/>
+            </RelativeLayout>
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_search_list"
-            android:layout_below="@id/edit_search_location"
-            android:layout_width="wrap_content"
+            android:layout_below="@id/layout_top_search"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
 </layout>

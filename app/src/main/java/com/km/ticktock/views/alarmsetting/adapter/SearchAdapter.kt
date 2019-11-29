@@ -1,6 +1,7 @@
 package com.km.ticktock.views.alarmsetting.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.km.ticktock.R
 import com.km.ticktock.databinding.ItemLocationSearchBinding
 import com.km.ticktock.views.alarmsetting.model.KeywordObject
+import kotlinx.android.synthetic.main.item_location_search.view.*
 
 class SearchAdapter(val context: Context) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     private var locationList = arrayListOf<KeywordObject.documents>()
@@ -33,11 +35,6 @@ class SearchAdapter(val context: Context) : RecyclerView.Adapter<SearchAdapter.S
         notifyDataSetChanged()
     }
 
-    fun addLocation(item: KeywordObject.documents) {
-        locationList.add(item)
-        notifyDataSetChanged()
-    }
-
     fun addLocations(items: ArrayList<KeywordObject.documents>) {
         locationList = items
         notifyDataSetChanged()
@@ -47,6 +44,11 @@ class SearchAdapter(val context: Context) : RecyclerView.Adapter<SearchAdapter.S
         fun bind(item: KeywordObject.documents) {
             binding.txtLocationTitle.text = item.place_name
             binding.txtLocationDetail.text = item.address_name
+
+            binding.root.setOnClickListener {
+                /* TODO: view 클릭하면 editText에 데이터를 띄우자 */
+                Log.d("KM", it.txt_location_title.text.toString())
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ class SearchActivity : BaseActivity() {
 
     private fun searchLocation() {
         /* TODO: LiveData를 이용해서 할 수 있는 방법이 있지 않을까.. */
-        edit_search_location.addTextChangedListener(object: TextWatcher{
+        edit_search_source.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
             }
 
