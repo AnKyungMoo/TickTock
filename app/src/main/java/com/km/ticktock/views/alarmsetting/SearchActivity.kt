@@ -10,6 +10,7 @@ import com.km.ticktock.base.BaseActivity
 import com.km.ticktock.databinding.ActivitySearchBinding
 import com.km.ticktock.services.RetrofitService
 import com.km.ticktock.views.alarmsetting.adapter.SearchAdapter
+import com.km.ticktock.views.alarmsetting.entity.LocationItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -68,6 +69,9 @@ class SearchActivity : BaseActivity() {
     private fun initRecyclerViewPath() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerviewSearchList.layoutManager = layoutManager
+        binding.recyclerviewSearchList.addItemDecoration(LocationItemDecoration(
+            applicationContext.resources.getDrawable(R.drawable.location_space_divider, theme)
+        ))
         binding.recyclerviewSearchList.adapter = SearchAdapter(this)
         binding.recyclerviewSearchList.setHasFixedSize(true)
     }

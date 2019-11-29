@@ -36,7 +36,9 @@
                 android:background="@drawable/search_text_shape"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginTop="14dp">
+                android:layout_marginTop="14dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <ImageView
                     android:id="@+id/img_source_search"
@@ -52,7 +54,10 @@
                     android:layout_height="wrap_content"
                     android:text="@{vm.searchtext}"
                     android:hint="출발지를 입력해주세요"
-                    android:layout_toEndOf="@id/img_source_search"/>
+                    android:layout_toEndOf="@id/img_source_search"
+                    android:layout_marginStart="8dp"
+                    android:textSize="14sp"
+                    android:background="@android:color/transparent"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -63,13 +68,15 @@
                 android:background="@drawable/search_text_shape"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <ImageView
                     android:id="@+id/img_destination_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ico_spot"
+                    android:src="@drawable/ico_end"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="21dp"/>
 
@@ -79,7 +86,10 @@
                     android:layout_height="wrap_content"
                     android:text="@{vm.searchtext}"
                     android:hint="목적지를 입력해주세요"
-                    android:layout_toEndOf="@id/img_destination_search"/>
+                    android:layout_toEndOf="@id/img_destination_search"
+                    android:layout_marginStart="8dp"
+                    android:textSize="14sp"
+                    android:background="@android:color/transparent"/>
             </RelativeLayout>
         </RelativeLayout>
 
