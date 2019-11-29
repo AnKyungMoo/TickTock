@@ -26,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".views.alarmsetting.SettingSecondActivity" />
         <activity
             android:name=".views.alarmsetting.LocationActivity"
             android:screenOrientation="portrait" />
