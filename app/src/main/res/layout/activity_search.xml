@@ -52,7 +52,7 @@
                     android:id="@+id/edit_search_source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.searchtext}"
+                    android:text="@={vm.searchText}"
                     android:hint="출발지를 입력해주세요"
                     android:layout_toEndOf="@id/img_source_search"
                     android:layout_marginStart="8dp"
@@ -84,7 +84,7 @@
                     android:id="@+id/edit_search_destination"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.searchtext}"
+                    android:text="@={vm.searchText}"
                     android:hint="목적지를 입력해주세요"
                     android:layout_toEndOf="@id/img_destination_search"
                     android:layout_marginStart="8dp"
@@ -97,6 +97,7 @@
             android:id="@+id/recyclerview_search_list"
             android:layout_below="@id/layout_top_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:setLocationList="@{vm.locationList}"/>
     </RelativeLayout>
 </layout>
