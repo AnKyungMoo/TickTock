@@ -9,13 +9,21 @@
         android:paddingEnd="20dp"
         android:background="@drawable/layout_border_radius">
 
+        <ImageView
+            android:id="@+id/img_title_normal_alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_hair"
+            android:layout_centerVertical="true"/>
+
         <EditText
             android:id="@+id/edit_title_third"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="150dp"
             android:layout_centerVertical="true"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:layout_toEndOf="@id/img_title_normal_alarm"/>
 
         <ImageView
             android:id="@+id/btn_alarm_time_decrease"
