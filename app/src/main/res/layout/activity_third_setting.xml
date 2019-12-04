@@ -51,12 +51,14 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_setting3"
+            android:id="@+id/recyclerview_alarm_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layout_title_setting3"/>
+            android:layout_height="match_parent"
+            android:layout_below="@id/layout_title_setting3"
+            android:layout_above="@id/btn_next_setting3"/>
 
         <RelativeLayout
+            android:id="@+id/btn_next_setting3"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="#b6b6b6"

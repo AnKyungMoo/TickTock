@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="27dp"
-    android:paddingBottom="27dp"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp">
-
-    <EditText
-        android:layout_width="wrap_content"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minWidth="150dp"
-        android:layout_centerVertical="true"
-        android:textSize="14sp"/>
+        android:paddingTop="27dp"
+        android:paddingBottom="27dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/layout_border_radius">
 
-    <ImageView
-        android:id="@+id/btn_alarm_time_decrease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_arrow_left"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/edit_alarm_time"/>
+        <EditText
+            android:id="@+id/edit_title_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="150dp"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"/>
 
-    <EditText
-        android:id="@+id/edit_alarm_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="44dp"
-        android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/btn_alarm_time_increase"/>
+        <ImageView
+            android:id="@+id/btn_alarm_time_decrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_arrow_left"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/edit_alarm_time"/>
 
-    <ImageView
-        android:id="@+id/btn_alarm_time_increase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_arrow_right"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/txt_alarm_minute"/>
+        <EditText
+            android:id="@+id/edit_alarm_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="44dp"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:layout_toStartOf="@id/btn_alarm_time_increase"/>
 
-    <TextView
-        android:id="@+id/txt_alarm_minute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="분"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"/>
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/btn_alarm_time_increase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_arrow_right"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/txt_alarm_minute"/>
+
+        <TextView
+            android:id="@+id/txt_alarm_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="분"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</layout>
