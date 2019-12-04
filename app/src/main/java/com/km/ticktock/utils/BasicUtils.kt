@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Point
 import android.view.Display
 import android.view.WindowManager
+import java.util.*
 
 class BasicUtils {
 
@@ -23,5 +24,11 @@ class BasicUtils {
             display.getSize(point)
             return point.x - 90
         }
+
+        fun getHour() = Calendar.getInstance().get(Calendar.HOUR)
+
+        fun getMinute() = Calendar.getInstance().get(Calendar.MINUTE)
+
+        fun getAMPM() = Calendar.getInstance().get(Calendar.AM_PM)
     }
 }
