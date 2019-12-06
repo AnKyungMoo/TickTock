@@ -57,7 +57,8 @@
                     android:layout_toEndOf="@id/img_source_search"
                     android:layout_marginStart="8dp"
                     android:textSize="14sp"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    app:selectSourceLocation="@{vm.searchText}"/>
             </RelativeLayout>
 
             <RelativeLayout
