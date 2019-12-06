@@ -1,3 +1,3 @@
 package com.km.ticktock.views.alarmsetting.model
 
-data class AlarmItemModel(val title: String, val time: Int, val viewType: Int)
+data class AlarmItemModel(var title: String, var time: Int, var viewType: Int)

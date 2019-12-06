@@ -15,10 +15,27 @@ import com.km.ticktock.views.alarmsetting.entity.AlarmType
 import com.km.ticktock.views.alarmsetting.model.AlarmItemModel
 
 class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
-    private val alarmList = arrayListOf<AlarmItemModel>(
+    private val alarmList = arrayListOf(
         AlarmItemModel("good", 5, AlarmType.NORMAL),
         AlarmItemModel("", 0, AlarmType.PLUS)
     )
+
+    fun revertAlarmMode() {
+        // 마지막 index는 + 버튼
+        for (i in 0 until alarmList.size - 1) {
+            when(alarmList[i].viewType) {
+                AlarmType.NORMAL -> {
+                    alarmList[i].viewType = AlarmType.EDIT
+                    /* TODO: +버튼 가리자 */
+                }
+                AlarmType.EDIT -> {
+                    alarmList[i].viewType = AlarmType.NORMAL
+                }
+            }
+        }
+
+        notifyDataSetChanged()
+    }
 
     fun addAlarm(alarm: AlarmItemModel, index: Int) {
         alarmList.add(index, alarm)
@@ -64,6 +81,11 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
         override fun bind(item: AlarmItemModel) {
             (binding as ItemNormalAlarmBinding).editTitleThird.text = Editable.Factory.getInstance().newEditable(item.title)
             binding.editAlarmTime.text = Editable.Factory.getInstance().newEditable(item.time.toString())
+            binding.root.setOnLongClickListener {
+                revertAlarmMode()
+
+                return@setOnLongClickListener false
+            }
         }
     }
 
