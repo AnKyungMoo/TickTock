@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.km.ticktock.R
+import com.km.ticktock.databinding.ItemAddAlarmBinding
 import com.km.ticktock.databinding.ItemEditAlarmBinding
 import com.km.ticktock.databinding.ItemNormalAlarmBinding
 import com.km.ticktock.views.alarmsetting.entity.AlarmType
@@ -16,15 +17,13 @@ import com.km.ticktock.views.alarmsetting.model.AlarmItemModel
 class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
     private val alarmList = arrayListOf<AlarmItemModel>(
         AlarmItemModel("good", 5, AlarmType.NORMAL),
-        AlarmItemModel("time", 10, AlarmType.EDIT),
-        AlarmItemModel("time", 10, AlarmType.NORMAL),
-        AlarmItemModel("time", 10, AlarmType.EDIT),
-        AlarmItemModel("time", 10, AlarmType.NORMAL),
-        AlarmItemModel("time", 10, AlarmType.EDIT),
-        AlarmItemModel("time", 10, AlarmType.NORMAL)
+        AlarmItemModel("", 0, AlarmType.PLUS)
     )
 
-    fun addAlarm(alarm: AlarmItemModel) = alarmList.add(alarm)
+    fun addAlarm(alarm: AlarmItemModel, index: Int) {
+        alarmList.add(index, alarm)
+        notifyItemInserted(index)
+    }
 
     override fun getItemViewType(position: Int) = alarmList[position].viewType
 
@@ -33,14 +32,19 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
 
         return when(viewType) {
             AlarmType.NORMAL -> {
-                val binding: ItemNormalAlarmBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_normal_alarm, viewGroup, false)
+                val bindingNormal: ItemNormalAlarmBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_normal_alarm, viewGroup, false)
 
-                AlarmNormalViewHolder(binding)
+                AlarmNormalViewHolder(bindingNormal)
+            }
+            AlarmType.EDIT -> {
+                val bindingEdit: ItemEditAlarmBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_edit_alarm, viewGroup, false)
+
+                AlarmEditViewHolder(bindingEdit)
             }
             else -> {
-                val binding2: ItemEditAlarmBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_edit_alarm, viewGroup, false)
+                val bindingPlus: ItemAddAlarmBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_add_alarm, viewGroup, false)
 
-                AlarmEditViewHolder(binding2)
+                AlarmPlusViewHolder(bindingPlus)
             }
         }
     }
@@ -56,17 +60,25 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
         abstract fun bind(item: AlarmItemModel)
     }
 
-    class AlarmNormalViewHolder(binding: ItemNormalAlarmBinding) : AlarmViewHolder(binding) {
+    inner class AlarmNormalViewHolder(binding: ItemNormalAlarmBinding) : AlarmViewHolder(binding) {
         override fun bind(item: AlarmItemModel) {
             (binding as ItemNormalAlarmBinding).editTitleThird.text = Editable.Factory.getInstance().newEditable(item.title)
             binding.editAlarmTime.text = Editable.Factory.getInstance().newEditable(item.time.toString())
         }
     }
 
-    class AlarmEditViewHolder(binding: ItemEditAlarmBinding) : AlarmViewHolder(binding) {
+    inner class AlarmEditViewHolder(binding: ItemEditAlarmBinding) : AlarmViewHolder(binding) {
         override fun bind(item: AlarmItemModel) {
             (binding as ItemEditAlarmBinding).txtTitleThird.text = Editable.Factory.getInstance().newEditable(item.title)
             binding.txtAlarmTime.text = Editable.Factory.getInstance().newEditable(item.time.toString())
+        }
+    }
+
+    inner class AlarmPlusViewHolder(binding: ItemAddAlarmBinding) : AlarmViewHolder(binding) {
+        override fun bind(item: AlarmItemModel) {
+            (binding as ItemAddAlarmBinding).imgPlusAddAlarm.setOnClickListener {
+                addAlarm(AlarmItemModel("", 0, AlarmType.NORMAL), adapterPosition)
+            }
         }
     }
 }
