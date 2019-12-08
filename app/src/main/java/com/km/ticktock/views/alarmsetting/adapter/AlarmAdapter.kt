@@ -3,6 +3,7 @@ package com.km.ticktock.views.alarmsetting.adapter
 import android.content.Context
 import android.text.Editable
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -13,8 +14,9 @@ import com.km.ticktock.databinding.ItemEditAlarmBinding
 import com.km.ticktock.databinding.ItemNormalAlarmBinding
 import com.km.ticktock.views.alarmsetting.entity.AlarmType
 import com.km.ticktock.views.alarmsetting.model.AlarmItemModel
+import java.util.*
 
-class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
+class AlarmAdapter(val itemDragListener: ItemDragListener): RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
     private val alarmList = arrayListOf(
         AlarmItemModel("good", 5, AlarmType.NORMAL),
         AlarmItemModel("", 0, AlarmType.PLUS)
@@ -40,6 +42,11 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
     fun addAlarm(alarm: AlarmItemModel, index: Int) {
         alarmList.add(index, alarm)
         notifyItemInserted(index)
+    }
+
+    fun onItemMove(fromPosition: Int, toPosition: Int) {
+        Collections.swap(alarmList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun getItemViewType(position: Int) = alarmList[position].viewType
@@ -93,6 +100,14 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
         override fun bind(item: AlarmItemModel) {
             (binding as ItemEditAlarmBinding).txtTitleThird.text = Editable.Factory.getInstance().newEditable(item.title)
             binding.txtAlarmTime.text = Editable.Factory.getInstance().newEditable(item.time.toString())
+
+            binding.imgMoveAlarm.setOnTouchListener{ _, motionEvent ->
+                if (motionEvent.action == MotionEvent.ACTION_DOWN) {
+                    itemDragListener.onStartDrag(this)
+                }
+
+                return@setOnTouchListener false
+            }
         }
     }
 
