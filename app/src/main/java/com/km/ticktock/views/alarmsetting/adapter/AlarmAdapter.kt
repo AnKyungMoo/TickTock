@@ -22,17 +22,29 @@ class AlarmAdapter(val itemDragListener: ItemDragListener): RecyclerView.Adapter
         AlarmItemModel("", 0, AlarmType.PLUS)
     )
 
+    /* TODO: 더 깔끔하게 만들 수 있는지 고민해보자.. */
     fun revertAlarmMode() {
-        // 마지막 index는 + 버튼
+        // PLUS 버튼을 제외한 alarm 객체들 revert
         for (i in 0 until alarmList.size - 1) {
             when(alarmList[i].viewType) {
                 AlarmType.NORMAL -> {
                     alarmList[i].viewType = AlarmType.EDIT
-                    /* TODO: +버튼 가리자 */
                 }
                 AlarmType.EDIT -> {
                     alarmList[i].viewType = AlarmType.NORMAL
                 }
+            }
+        }
+
+        // 마지막 PLUS 버튼 처리
+        val index = alarmList.size - 1
+        when(alarmList[index].viewType) {
+            AlarmType.PLUS -> {
+                alarmList.removeAt(index)
+            }
+            else -> {
+                alarmList[index].viewType = AlarmType.NORMAL
+                alarmList.add(AlarmItemModel("", 0, AlarmType.PLUS))
             }
         }
 
@@ -100,6 +112,13 @@ class AlarmAdapter(val itemDragListener: ItemDragListener): RecyclerView.Adapter
         override fun bind(item: AlarmItemModel) {
             (binding as ItemEditAlarmBinding).txtTitleThird.text = Editable.Factory.getInstance().newEditable(item.title)
             binding.txtAlarmTime.text = Editable.Factory.getInstance().newEditable(item.time.toString())
+
+            /* TODO: 나중에 완료 버튼 생기면 바꾸자 */
+            binding.root.setOnLongClickListener {
+                revertAlarmMode()
+
+                return@setOnLongClickListener false
+            }
 
             binding.imgMoveAlarm.setOnTouchListener{ _, motionEvent ->
                 if (motionEvent.action == MotionEvent.ACTION_DOWN) {
