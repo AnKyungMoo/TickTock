@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#3f3f3f</color>
+
+    <color name="color_main">#ff562d</color>
 
     <color name="orange_red">#ff562d</color>
     <color name="switch_gray">#b3b3b3</color>

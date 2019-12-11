@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".views.main.MainActivity">
+        <activity
+            android:name=".views.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
@@ -21,10 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".views.alarmsetting.SettingActivity2">
-
-        </activity>
-        <activity android:name=".views.alarmsetting.LocationActivity" />
+        <activity
+            android:name=".views.alarmsetting.SettingFirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.alarmsetting.SettingActivity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.alarmsetting.LocationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
