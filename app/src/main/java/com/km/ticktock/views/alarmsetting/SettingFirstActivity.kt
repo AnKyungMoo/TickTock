@@ -84,7 +84,7 @@ class SettingFirstActivity : BaseActivity() {
         /* 클릭 이벤트 & 데이터 변경 여부를
          * 뷰모델로 관찰
          */
-        observeMainViewModel()
+        observeSettingFirstViewModel()
     }
 
     /* 요일 선택 여부에 따라 우선순위 큐에 insert
@@ -153,7 +153,7 @@ class SettingFirstActivity : BaseActivity() {
 
     /* 클릭 이벤트 바인딩
      */
-    private fun observeMainViewModel() {
+    private fun observeSettingFirstViewModel() {
 
         val owner = this
         with(viewModel) {
